@@ -28,6 +28,10 @@ namespace r00ch.LotteryTicketRegistrator.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddTransient<UserManager<ApplicationUser>>();
+            //services.AddTransient<RoleManager<ApplicationRole>>();
+            //services.AddTransient<SignInManager<ApplicationUser>>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -48,6 +52,7 @@ namespace r00ch.LotteryTicketRegistrator.Web
                 }).AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
