@@ -1,2 +1,2 @@
 # LotteryTicketRegistrator
-ASP .NET CORE 3.0 + BLAZOR web application demo
+ASP .NET CORE 2.2 web application demo
