@@ -48,7 +48,7 @@ namespace r00ch.LotteryTicketRegistrator.Web
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
-                    options.User.RequireUniqueEmail = true;
+                    options.User.RequireUniqueEmail = false;
                 }).AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

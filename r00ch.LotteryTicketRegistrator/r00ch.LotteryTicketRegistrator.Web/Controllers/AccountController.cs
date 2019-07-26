@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using r00ch.LotteryTicketRegistrator.Repositories.Architecture;
+using r00ch.LotteryTicketRegistrator.Web.Models;
 
 namespace r00ch.LotteryTicketRegistrator.Web.Controllers
 {
@@ -19,25 +21,68 @@ namespace r00ch.LotteryTicketRegistrator.Web.Controllers
             SignInManager = siMgr;
         }
 
-        public async Task<IActionResult> Register(string name = "TestUser", string password = "TestPassword")
+        public async Task<IActionResult> Register()
         {
-            try
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(UserModel userData)
+        {
+            if (TryValidateModel(userData))
             {
-                ViewBag.Message = "User already regustered";
-
-                var user = await UserManager.FindByNameAsync(name);
-
-                if (user == null)
+                try
                 {
-                    user = new ApplicationUser { UserName = name };
+                    ViewBag.Message = "User already registered";
 
-                    var result = await UserManager.CreateAsync(user, password);
-                    ViewBag.Message = "User was created";
+                    var user = await UserManager.FindByNameAsync(userData.Login);
+
+                    if (user == null)
+                    {
+                        user = new ApplicationUser {UserName = userData.Login};
+
+                        var result = await UserManager.CreateAsync(user, userData.Password);
+                        ViewBag.Message = "User was created";
+
+                        if(result.Succeeded)
+                            return RedirectToAction("Index", "Home");
+
+                        var sb = new StringBuilder();
+                        foreach (var error in result.Errors)
+                        {
+                            sb.AppendLine(error.Description);
+                        }
+                        throw new Exception(sb.ToString());
+                    }
+                }
+                catch (Exception exception)
+                {
+                    ViewBag.Message = exception.Message;
                 }
             }
-            catch (Exception exception)
+
+            return View();
+        }
+
+        public async Task<IActionResult> Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(UserModel user)
+        {
+            if (TryValidateModel(user))
             {
-                ViewBag.Message = exception.Message;
+                var result = await SignInManager.PasswordSignInAsync(user.Login, user.Password, false, false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Result = $"Login result: {result.ToString()}";
+                }
             }
 
             return View();

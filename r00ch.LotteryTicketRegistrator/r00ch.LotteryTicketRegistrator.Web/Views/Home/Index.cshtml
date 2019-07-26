@@ -1,55 +1,10 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Rewrite.Internal.UrlActions
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-    <input id="login"  />
-    <input id="password" type="password" />
 </div>
 
-@section Scripts{ 
-    <script type="text/javascript">
-        //$("#login").keyboard();
-        //$("#password").keyboard(); virtual keyboaard test
-
-        $('#password')
-            .keyboard({
-                openOn : null,
-                stayOpen : true,
-                layout : 'qwerty'
-            })
-            .addTyping();
-
-        $('#password').click(function(){
-            var kb = $('#password').getkeyboard();
-            // close the keyboard if the keyboard is visible and the button is clicked a second time
-            if ( kb.isOpen ) {
-                kb.close();
-            } else {
-                kb.reveal();
-            }
-        });
-
-        $('#login')
-            .keyboard({
-                openOn: null,
-                stayOpen: true,
-                layout: 'qwerty'
-            })
-            .addTyping();
-
-        $('#login').click(function () {
-            var kb = $('#login').getkeyboard();
-            // close the keyboard if the keyboard is visible and the button is clicked a second time
-            if (kb.isOpen) {
-                kb.close();
-            } else {
-                kb.reveal();
-            }
-        });
-
-    </script>
-}

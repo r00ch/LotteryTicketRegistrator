@@ -12,6 +12,11 @@ namespace r00ch.LotteryTicketRegistrator.Web.Controllers
     {
         public IActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View();
         }
 
