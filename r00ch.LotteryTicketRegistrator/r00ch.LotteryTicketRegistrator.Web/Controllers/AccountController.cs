@@ -87,5 +87,11 @@ namespace r00ch.LotteryTicketRegistrator.Web.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await SignInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
