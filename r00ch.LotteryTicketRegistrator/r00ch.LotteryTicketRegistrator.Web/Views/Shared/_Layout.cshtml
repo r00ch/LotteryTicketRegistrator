@@ -22,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">r00ch.LotteryTicketRegistrator.Web</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">r00ch</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">@User.Identity.Name, Logout</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            }
                         </li>
                     </ul>
                 </div>
@@ -57,7 +64,7 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        
+
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -73,10 +80,17 @@
                 integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
         </script>
     </environment>
-<script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 @*<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
-<script src="~/lib/plugins/jquery.virtual_keyboard/jquery.virtual_keyboard.js" type="text/javascript"></script>
+                <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="~/lib/plugins/jquery.virtual_keyboard/jquery.virtual_keyboard.js" type="text/javascript"></script>*@
+<link href="~/css/keyboard.css" rel="stylesheet">
+@*<link href="~/lib/plugins/Keyboard-master/docs/css/jquery-ui.min.css" rel="stylesheet">*@
+<script src="~/lib/plugins/Keyboard-master/js/jquery.keyboard.js"></script>
+<script src="~/lib/plugins/Keyboard-master/js/jquery.mousewheel.js"></script>
+<script src="~/lib/plugins/Keyboard-master/js/jquery.keyboard.extension-typing.js"></script>
+<script src="~/lib/plugins/Keyboard-master/js/jquery.keyboard.extension-autocomplete.js"></script>
+<script src="~/lib/plugins/Keyboard-master/js/jquery.keyboard.extension-caret.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

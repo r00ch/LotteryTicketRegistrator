@@ -18,5 +18,29 @@ namespace r00ch.LotteryTicketRegistrator.Web.Controllers
             UserManager = usrMgr;
             SignInManager = siMgr;
         }
+
+        public async Task<IActionResult> Register(string name = "TestUser", string password = "TestPassword")
+        {
+            try
+            {
+                ViewBag.Message = "User already regustered";
+
+                var user = await UserManager.FindByNameAsync(name);
+
+                if (user == null)
+                {
+                    user = new ApplicationUser { UserName = name };
+
+                    var result = await UserManager.CreateAsync(user, password);
+                    ViewBag.Message = "User was created";
+                }
+            }
+            catch (Exception exception)
+            {
+                ViewBag.Message = exception.Message;
+            }
+
+            return View();
+        }
     }
 }

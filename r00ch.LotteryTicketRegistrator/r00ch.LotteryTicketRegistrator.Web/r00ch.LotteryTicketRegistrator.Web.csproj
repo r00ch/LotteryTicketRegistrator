@@ -18,9 +18,4 @@
     <ProjectReference Include="..\r00ch.LotteryTicketRegostrator.Repositories\r00ch.LotteryTicketRegostrator.Repositories.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\plugins\" />
-  </ItemGroup>
-
 </Project>
