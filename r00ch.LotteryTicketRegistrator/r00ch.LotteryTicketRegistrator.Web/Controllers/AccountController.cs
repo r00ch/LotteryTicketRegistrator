@@ -43,7 +43,7 @@ namespace r00ch.LotteryTicketRegistrator.Web.Controllers
 
                         var result = await UserManager.CreateAsync(user, userData.Password);
                         ViewBag.Message = "User was created";
-
+                        
                         if(result.Succeeded)
                             return RedirectToAction("Index", "Home");
 
