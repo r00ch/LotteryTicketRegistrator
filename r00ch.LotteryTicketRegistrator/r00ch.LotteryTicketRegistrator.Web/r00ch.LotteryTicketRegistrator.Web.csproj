@@ -15,6 +15,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\r00ch.LotteryTicketRegistrator.Services\r00ch.LotteryTicketRegistrator.Services.csproj" />
     <ProjectReference Include="..\r00ch.LotteryTicketRegostrator.Repositories\r00ch.LotteryTicketRegostrator.Repositories.csproj" />
   </ItemGroup>
 

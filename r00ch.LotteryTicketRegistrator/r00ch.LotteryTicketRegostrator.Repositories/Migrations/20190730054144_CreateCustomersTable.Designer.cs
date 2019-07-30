@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using r00ch.LotteryTicketRegistrator.Repositories.Architecture;
 
 namespace r00ch.LotteryTicketRegostrator.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190730054144_CreateCustomersTable")]
+    partial class CreateCustomersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,7 +104,7 @@ namespace r00ch.LotteryTicketRegostrator.Repositories.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("r00ch.LotteryTicketRegistrator.Models.Entities.Customer", b =>
+            modelBuilder.Entity("r00ch.LotteryTicketRegistrator.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -119,8 +121,7 @@ namespace r00ch.LotteryTicketRegostrator.Repositories.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired();
+                    b.Property<int>("PhoneNumber");
 
                     b.Property<string>("PostalCode")
                         .IsRequired()

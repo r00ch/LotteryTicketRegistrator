@@ -7,13 +7,14 @@ $('#password')
     .keyboard({
         openOn: null,
         stayOpen: true,
-        layout: 'qwerty'
+        layout: 'qwerty',
+        autoAccept: true
     })
     .addTyping();
 
 $('#password').click(function () {
     var kb = $('#password').getkeyboard();
-    // close the keyboard if the keyboard is visible and the button is clicked a second time
+
     if (kb.isOpen) {
         kb.close();
     } else {
@@ -25,13 +26,105 @@ $('#login')
     .keyboard({
         openOn: null,
         stayOpen: true,
-        layout: 'qwerty'
+        layout: 'qwerty',
+        autoAccept: true
     })
     .addTyping();
 
 $('#login').click(function () {
     var kb = $('#login').getkeyboard();
-    // close the keyboard if the keyboard is visible and the button is clicked a second time
+
+    if (kb.isOpen) {
+        kb.close();
+    } else {
+        kb.reveal();
+    }
+});
+
+$('#phoneNumber')
+    .keyboard({
+        openOn: null,
+        stayOpen: true,
+        layout: 'num',
+        autoAccept: true
+    })
+    .addTyping();
+
+$('#phoneNumber').click(function () {
+    var kb = $('#phoneNumber').getkeyboard();
+
+    if (kb.isOpen) {
+        kb.close();
+    } else {
+        kb.reveal();
+    }
+});
+
+$('#firstName')
+    .keyboard({
+        openOn: null,
+        stayOpen: true,
+        layout: 'qwerty'
+    })
+    .addTyping();
+
+$('#firstName').click(function () {
+    var kb = $('#firstName').getkeyboard();
+
+    if (kb.isOpen) {
+        kb.close();
+    } else {
+        kb.reveal();
+    }
+});
+
+$('#lastName')
+    .keyboard({
+        openOn: null,
+        stayOpen: true,
+        layout: 'qwerty'
+    })
+    .addTyping();
+
+$('#lastName').click(function () {
+    var kb = $('#lastName').getkeyboard();
+
+    if (kb.isOpen) {
+        kb.close();
+    } else {
+        kb.reveal();
+    }
+});
+
+$('#postalCode')
+    .keyboard({
+        openOn: null,
+        stayOpen: true,
+        layout: 'num'
+    })
+    .addTyping();
+
+$('#postalCode').click(function () {
+    var kb = $('#postalCode').getkeyboard();
+
+    if (kb.isOpen) {
+        kb.close();
+    } else {
+        kb.reveal();
+    }
+});
+
+$('#emailAddress')
+    .keyboard({
+        openOn: null,
+        stayOpen: true,
+        layout: 'qwerty'
+    })
+    .addTyping();
+
+$('#emailAddress').click(function () {
+    var kb = $('#emailAddress').getkeyboard();
+
     if (kb.isOpen) {
         kb.close();
     } else {

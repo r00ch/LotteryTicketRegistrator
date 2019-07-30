@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using r00ch.LotteryTicketRegistrator.Repositories.Architecture;
+using r00ch.LotteryTicketRegistrator.Services;
+using r00ch.LotteryTicketRegostrator.Repositories.Repositories;
 
 namespace r00ch.LotteryTicketRegistrator.Web
 {
@@ -31,6 +33,8 @@ namespace r00ch.LotteryTicketRegistrator.Web
             //services.AddTransient<UserManager<ApplicationUser>>();
             //services.AddTransient<RoleManager<ApplicationRole>>();
             //services.AddTransient<SignInManager<ApplicationUser>>();
+            services.AddTransient<CustomerService>();
+            services.AddTransient<CustomerRepository>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
